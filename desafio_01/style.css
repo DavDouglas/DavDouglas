@@ -1,0 +1,61 @@
+body{
+    background: rgb(111,241,237);
+    background: linear-gradient(90deg, rgba(111,241,237,1) 0%, rgba(120,184,157,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+
+body textarea{
+    border-radius: 5px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    "cabecalho decodificado"
+    "decodificar decodificado"
+    "rotulo decodificado"
+    "botoes decodificado";
+
+    place-self: center;
+    padding: 20px;
+    gap: 10px;
+    grid-template-columns: minmax(200px auto) minmax(300px auto);
+    grid-template-rows: 100px minmax(600px auto) 30px 50px;
+}
+
+.cabecalho{
+    grid-area: cabecalho;
+    padding: 10px;
+}
+
+.decodificado{
+    grid-area: decodificado;
+    padding: 10px;
+}
+
+.decodificar{
+    grid-area: decodificar;
+    padding: 10px;
+}
+
+.rotulo{
+    grid-area: rotulo;
+    padding: 4px;
+}
+
+.botoes_decodificador{
+    padding: 10px;
+    grid-area: botoes;
+    place-self: center;
+}
+
+.botoes{
+    color: #000000;
+	font-weight: bold;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+	transition: 1s all;
+	cursor: pointer;
+}
+

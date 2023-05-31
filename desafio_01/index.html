@@ -1,14 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Challenge 01 - Alura ONE</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 48
+        }
+    </style>
 </head>
 <body>
+<div class="grid-container">
+    <header class="cabecalho">
+        <img src="alura-logo.1647533643.svg" alt="Logo Alura">
+    </header>
     
+    <!-- Áreas de texto -->
+    <textarea id="decodificar" name="decodificar" rows="20" cols="10" placeholder="Digite seu texto"></textarea>
+    <textarea id="decodificado" class="decodificado" rows="50" cols="30" placeholder="Nenhum texto ainda criptografado."></textarea>
+
+    <label class="rotulo">
+        <span class="material-symbols-outlined">warning</span>
+        Apenas letras maiúsculas e minúsculas sem acento.
+    </label>
+    
+    <!-- Botões -->
+    <div class="botoes_decodificador">
+        <input type="button" onclick="troca_letras()" value="Criptografar" id="criptografar" class="botoes">
+        <input type="button" onclick="descriptografar()" value="Descriptografar" id="descriptografar" class="botoes">
+        <input type="button" onclick="copiar()" value="Copiar" id="copiar" class="botoes">
+    </div>   
+</div>
+
+<!--
+As "chaves" de criptografia que utilizaremos são:
+A letra "e" é convertida para "enter"
+A letra "i" é convertida para "imes"
+A letra "a" é convertida para "ai"
+A letra "o" é convertida para "ober"
+A letra "u" é convertida para "ufat"
+-->
+
+<script>
+    function troca_letras() {
+        var decodificar = document.getElementById("decodificar");
+        var decodificado = document.getElementById("decodificado");
+
+        var texto = decodificar.value;
+
+        texto = texto.replace(/a/g, "ai");
+        texto = texto.replace(/e/g, "enter");
+        texto = texto.replace(/i/g, "imes");
+        texto = texto.replace(/o/g, "ober");
+        texto = texto.replace(/u/g, "ufat");
+
+        decodificado.value = texto; 
+    }
+
+    function descriptografar() {
+        var decodificado = document.getElementById("decodificado");
+        var decodificar = document.getElementById("decodificar");
+
+        var texto = decodificar.value;
+
+        texto = texto.replace(/enter/g, "e"); // /g representa qualquer instância do texto que contiver o argumento entre as barras
+        texto = texto.replace(/imes/g, "i");
+        texto = texto.replace(/ai/g, "a");
+        texto = texto.replace(/ober/g, "o");
+        texto = texto.replace(/ufat/g, "u");
+
+        decodificado.value = texto; 
+    }
+
+    function copiar(){
+        var decodificado = document.getElementById("decodificado");      
+        decodificado.select();
+        document.execCommand("copy"); // Copiar o texto selecionado no textarea "decodificado" para a área de transferência
+    }
+</script>
 </body>
 </html>
